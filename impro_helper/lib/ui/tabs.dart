@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:impro_helper/common.dart';
 import '../utils/custom_icons.dart';
 
 TextStyle tabStyle([double? fontSize]) => TextStyle(
@@ -10,19 +10,19 @@ TextStyle tabStyle([double? fontSize]) => TextStyle(
 List<Tab> tabs(BuildContext context) => <Tab>[
   Tab(
     icon: const Icon(CustomIcons.whistleEmpty),
-    child:  Text('Current Match', style: tabStyle(10), maxLines: 2 , textAlign: TextAlign.center,)),
+    child:  Text(AppLocalizations.of(context)!.currentMatch, style: tabStyle(10), maxLines: 2 , textAlign: TextAlign.center,)),
   Tab(
     icon: const Icon(Icons.scoreboard),
-    child: Text('Scores', style: tabStyle(10.0))),
+    child: Text(AppLocalizations.of(context)!.scores, style: tabStyle(10.0))),
   Tab(
     icon: const Icon(Icons.add_circle_outline),
-    child: Text('New Impro', style: tabStyle(10.0), maxLines: 2, textAlign: TextAlign.center,)),
+    child: Text(AppLocalizations.of(context)!.newImpro, style: tabStyle(10.0), maxLines: 2, textAlign: TextAlign.center,)),
   Tab(
     icon: const Icon(Icons.book),
-    child: Text('All Matches', style: tabStyle(10.0), maxLines: 2, textAlign: TextAlign.center,)),
+    child: Text(AppLocalizations.of(context)!.matches, style: tabStyle(10.0), maxLines: 2, textAlign: TextAlign.center,)),
   Tab(
     icon: const Icon(CustomIcons.database),
-    child: Text('Database', style: tabStyle(10.0))),
+    child: Text(AppLocalizations.of(context)!.database, style: tabStyle(10.0))),
 ];
 
 /// Nicknames for the tabs so that we don't have to remember their index

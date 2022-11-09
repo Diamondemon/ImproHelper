@@ -1,3 +1,9 @@
 {
-    "@@locale": "en"
+    "@@locale": "en",
+    "@@last_modified": "2022-11-09T16:23:26+00:00",
+    "currentMatch": "Current Match",
+    "scores": "Scores",
+    "newImpro": "New Improv",
+    "matches": "All Matches",
+    "database": "Database"
 }
