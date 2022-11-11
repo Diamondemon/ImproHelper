@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isar/isar.dart';
 
 part 'category.g.dart';
 
@@ -44,11 +45,16 @@ Energy energyFrom(String s) {
 }
 
 /// Category of improvisation, with provided information
+@collection
 class Category {
+
+  Id id = Isar.autoIncrement;
+
   String name;
 
   String description;
 
+  @enumerated
   Energy energy;
 
   // Constructor
