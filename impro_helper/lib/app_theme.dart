@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static bool isDark = false;
+  static bool isDark = true;
 
   /// Default constructor
   //AppTheme({required this.isDark});

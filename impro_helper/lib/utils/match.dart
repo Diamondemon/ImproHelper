@@ -1,7 +1,5 @@
 import 'impro.dart';
 
-part 'match.g.dart';
-
 /// Match class
 class Match {
   String name;

@@ -5,8 +5,9 @@ import 'package:impro_helper/ui/tabs.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
+@RoutePage(name: "HomeRouter")
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -20,20 +21,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     FlutterNativeSplash.remove();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter.tabBar(
-        routes: [
-          CurrentMatchRouter(),
-          ScoresRouter(),
-          NewImprovRouter(),
-          MatchesRouter(),
-          DatabaseRouter()
+        routes: const [
+          EmptyPageRoute(),
+          EmptyPageRoute(),
+          EmptyPageRoute(),
+          EmptyPageRoute(),
+          EmptyPageRoute()
         ],
         builder: (ctxt, child, tabController){
           return Scaffold(

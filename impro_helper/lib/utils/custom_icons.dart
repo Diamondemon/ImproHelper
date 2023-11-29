@@ -13,6 +13,7 @@
 ///
 /// 
 ///
+library;
 import 'package:flutter/widgets.dart';
 
 /// Custom font to have custom icons into the Navigation bar

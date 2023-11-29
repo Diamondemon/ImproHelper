@@ -2,8 +2,6 @@
 import 'category.dart';
 import 'utils.dart';
 
-part 'impro.g.dart';
-
 enum ImproType {
   none,
   mixed,

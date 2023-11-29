@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-part 'category.g.dart';
-
 enum Energy {
   low,
   medium,

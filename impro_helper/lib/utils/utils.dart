@@ -5,7 +5,7 @@ String timeToString(int seconds) {
   int s = seconds % 60;
   String mString = m.toString();
   String sString = (s+100).toString().substring(1); // display 05 instead of 5
-  return mString+":"+sString;
+  return "$mString:$sString";
 }
 
 extension StringExtension on String {

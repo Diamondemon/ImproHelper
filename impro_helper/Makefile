@@ -1,5 +1,5 @@
 
-PHONY: bundle apks build_runner intl install release bump patch_bump minor_bump major_bump patch_release minor_release major_release icon splash
+PHONY: bundle apks build_runner build_watch intl install release bump patch_bump minor_bump major_bump patch_release minor_release major_release icon splash
 
 install:
 	flutter install
@@ -11,7 +11,10 @@ apks:
 	flutter build apk --split-per-abi --no-tree-shake-icons --no-shrink --no-sound-null-safety
 
 build_runner:
-	flutter pub run build_runner build --delete-conflicting-outputs
+	dart run build_runner build --delete-conflicting-outputs
+
+build_watch:
+	dart run build_runner watch --delete-conflicting-outputs
 
 intl:
 	flutter gen-l10n
@@ -37,7 +40,7 @@ minor_release: minor_bump bundle
 major_release: major_bump bundle
 
 icon:
-	flutter pub run flutter_launcher_icons:main
+	dart run flutter_launcher_icons:main
 
 splash:
-	flutter pub run flutter_native_splash:create
+	dart run flutter_native_splash:create
