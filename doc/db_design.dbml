@@ -1,0 +1,54 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table matches {
+  id integer [primary key, increment]
+  date date [not null]
+}
+
+Table improvisations {
+  id integer [primary key, increment]
+  theme_id integer [not null]
+  improType integer [not null]
+  minPlayers integer [not null]
+  maxPlayers integer [not null]
+  prepTime integer [not null]
+  improTime integer [not null]
+
+}
+
+Table themes {
+  id integer [primary key, increment]
+  title text [not null]
+}
+
+Table teams {
+ id integer [primary key, increment]
+ name varchar [not null]
+ picture_url varchar [not null]
+}
+
+Table scores {
+  id integer [primary key, increment]
+  match_id integer [not null]
+  team_id integer [not null]
+  score integer [not null]
+  penalty_points integer [not null]
+}
+
+Table match_to_improv {
+  id integer [primary key, increment]
+  match_id integer [not null]
+  improv_id integer [not null]
+}
+
+Ref: scores.match_id > matches.id
+
+
+Ref: "themes"."id" < "improvisations"."theme_id"
+
+Ref: "teams"."id" < "scores"."team_id"
+
+Ref: "matches"."id" < "match_to_improv"."match_id"
+
+Ref: "improvisations"."id" < "match_to_improv"."improv_id"
