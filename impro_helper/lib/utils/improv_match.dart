@@ -1,9 +1,11 @@
+import 'dart:convert';
+
 import 'impro.dart';
 
 /// Match class
-class Match {
+class ImprovMatch {
   String name;
-  String date;
+  DateTime date;
   List<Impro> improList;
 
   /// [points[i]] is the number of points of team [i]
@@ -13,7 +15,7 @@ class Match {
   /// [teams[i]] is the name of team [i]
   List<String> teams = ["Team A", "Team B"];
 
-  Match({required this.name, required this.date, required this.improList});
+  ImprovMatch({required this.name, required this.date, required this.improList});
 
   Impro getImpro(int i) {
     return improList[i];
@@ -87,7 +89,7 @@ class Match {
   Map<String, dynamic> toJson(){
     return {
       "name": name,
-      "date": date,
+      "date": date.millisecondsSinceEpoch,
       "improList": improList,
       "points": points,
       "penalties": penalties,
@@ -95,9 +97,18 @@ class Match {
     };
   }
 
-  Match.fromJson(Map<String, dynamic> json):
+  ImprovMatch.fromJson(Map<String, dynamic> json):
         name= json["name"],
         date= json["date"],
         improList= List<Impro>.from((json["improList"] as List).map((e) => Impro.fromJson(e)))
-    ;
+  ;
+
+  ImprovMatch.fromDB(Map<String, dynamic> map):
+        name= map["name"],
+        date= map["date"],
+        improList= List<Impro>.from((const JsonDecoder().convert(map["improvisations"]) as List).map((e) => Impro.fromJson(e))),
+        points= List<int>.from(const JsonDecoder().convert(map["points"])),
+        penalties= List<int>.from(map["penalties"]),
+        teams= List<String>.from(map["teams"])
+  ;
 }
