@@ -20,7 +20,7 @@ abstract class $AppRouter extends _i3.RootStackRouter {
     EmptyPageRoute.name: (routeData) {
       return _i3.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i1.EmptyPage(),
+        child: const _i1.EmptyPage(),
       );
     },
     HomeRouter.name: (routeData) {

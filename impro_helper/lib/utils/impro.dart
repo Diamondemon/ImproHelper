@@ -36,8 +36,8 @@ ImproType improTypeFrom(String s) {
 class Impro {
   Category category;
   String theme;
-  int prepTime;
-  int improTime;
+  Duration prepTime;
+  Duration improTime;
   int minPlayers;
   int maxPlayers;
   ImproType improType;
@@ -59,8 +59,8 @@ class Impro {
   }
 
   bool get isValid {
-    return category.name != "" && theme != "" && prepTime >= 0 && improTime >= 0 &&
-        minPlayers >= 0 && maxPlayers >= minPlayers;
+    return category.name.isNotEmpty && theme.isNotEmpty && !prepTime.isNegative && !improTime.isNegative &&
+        !minPlayers.isNegative && maxPlayers >= minPlayers;
   }
 
   /// Deep copy of an impro
@@ -95,8 +95,8 @@ class Impro {
     return Impro(
         category: Category.fromJson(json["category"]),
         theme: json["theme"],
-        prepTime: json["prepTime"],
-        improTime: json["improTime"],
+        prepTime: Duration(seconds: json["prepTime"]),
+        improTime: Duration(seconds: json["improTime"]),
         minPlayers: json["minPlayers"],
         maxPlayers: json["maxPlayers"],
         improType: ImproType.values[json["improType"]]
