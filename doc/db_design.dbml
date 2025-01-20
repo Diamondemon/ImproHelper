@@ -3,29 +3,38 @@
 
 Table matches {
   id integer [primary key, increment]
-  date date [not null]
+  matchDate date [not null]
 }
 
 Table improvisations {
   id integer [primary key, increment]
   theme_id integer [not null]
-  improType integer [not null]
+  improvType integer [not null]
   minPlayers integer [not null]
   maxPlayers integer [not null]
   prepTime integer [not null]
-  improTime integer [not null]
+  improvTime integer [not null]
+  isFavorite boolean [not null]
+}
 
+Table improvTypes {
+  id integer [primary key, increment]
+  title text [not null]
+  description text [not null]
+  isFavorite boolean [not null]
 }
 
 Table themes {
   id integer [primary key, increment]
   title text [not null]
+  isFavorite boolean [not null]
 }
 
 Table teams {
  id integer [primary key, increment]
- name varchar [not null]
- picture_url varchar [not null]
+ name text [not null]
+ picture_url text [not null]
+ notes text [not null]
 }
 
 Table scores {
@@ -42,13 +51,14 @@ Table match_to_improv {
   improv_id integer [not null]
 }
 
-Ref: scores.match_id > matches.id
+Ref: improvTypes.id < improvisations.improvType
 
+Ref: themes.id < improvisations.theme_id
 
-Ref: "themes"."id" < "improvisations"."theme_id"
+Ref: teams.id < scores.team_id
 
-Ref: "teams"."id" < "scores"."team_id"
+Ref: scores.match_id >  matches.id
 
-Ref: "matches"."id" < "match_to_improv"."match_id"
+Ref: matches.id < match_to_improv.match_id
 
-Ref: "improvisations"."id" < "match_to_improv"."improv_id"
+Ref: improvisations.id < match_to_improv.improv_id
